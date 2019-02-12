@@ -22,7 +22,6 @@ public class HotXposed {
       Log.e("error", "apk file not found");
       return;
     }
-
     filterNotify(lpparam);
 
     PathClassLoader classLoader =
