@@ -1,4 +1,4 @@
-package com.weisente.demo.util;
+package com.weisente.demo.base;
 
 /**
  * Created  on 2018/3/30.

@@ -4,8 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.weisente.demo.util.Constants;
-import com.weisente.demo.util.IHookerDispatcher;
+import com.weisente.demo.base.Constants;
+import com.weisente.demo.base.IHookerDispatcher;
 
 
 import de.robv.android.xposed.XC_MethodHook;

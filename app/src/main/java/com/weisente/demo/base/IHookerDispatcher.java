@@ -1,4 +1,4 @@
-package com.weisente.demo.util;
+package com.weisente.demo.base;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
