@@ -1,4 +1,4 @@
-package com.weisente.demo.Intercept;
+package com.weisente.demo;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -20,7 +20,6 @@ public class HookerDispatcher implements IHookerDispatcher {
   @Override
   public void dispatch(XC_LoadPackage.LoadPackageParam loadPackageParam) {
 
-      XposedBridge.log("进来了");
 
     if(!Constants.TARGET_PACKAGE_NAME.equals(loadPackageParam.packageName)){
       return;

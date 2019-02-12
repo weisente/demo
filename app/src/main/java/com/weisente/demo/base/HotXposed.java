@@ -6,6 +6,7 @@ import java.io.File;
 
 import dalvik.system.PathClassLoader;
 import de.robv.android.xposed.XC_MethodHook;
+import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
@@ -18,15 +19,17 @@ public class HotXposed {
     String packageName = clazz.getName().replace("."+clazz.getSimpleName(),"");
     File apkFile = getApkFile(packageName);
 
-    if (!apkFile.exists()) {
-      Log.e("error", "apk file not found");
+      if (!apkFile.exists()) {
+      Log.e("error", "apk file not found！！");
+      XposedBridge.log("apk file not found！！");
       return;
     }
-    filterNotify(lpparam);
 
+    filterNotify(lpparam);
+    XposedBridge.log("取消通知");
     PathClassLoader classLoader =
         new PathClassLoader(apkFile.getAbsolutePath(), lpparam.getClass().getClassLoader());
-
+      XposedBridge.log("分发dispatch");
     XposedHelpers.callMethod(classLoader.loadClass(clazz.getName()).newInstance(), "dispatch",lpparam);
 
   }
@@ -55,8 +58,10 @@ public class HotXposed {
     File apkFile = new File(filePath);
     if (!apkFile.exists()) {
       filePath = String.format("/data/app/%s-%s/base.apk", packageName, 2);
+
       apkFile = new File(filePath);
     }
+    XposedBridge.log(apkFile.getAbsolutePath());
     return apkFile;
   }
 }

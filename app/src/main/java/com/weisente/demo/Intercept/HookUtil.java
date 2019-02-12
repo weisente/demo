@@ -2,6 +2,7 @@ package com.weisente.demo.Intercept;
 
 
 
+import com.weisente.demo.HookerDispatcher;
 import com.weisente.demo.base.HotXposed;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
@@ -16,7 +17,6 @@ public class HookUtil implements IXposedHookLoadPackage {
   @Override
   public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam loadPackageParam)
       throws Throwable {
-    XposedBridge.log("HookUtil");
     HotXposed.hook(HookerDispatcher.class, loadPackageParam);
   }
 }
